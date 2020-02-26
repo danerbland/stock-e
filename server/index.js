@@ -9,6 +9,12 @@ function createApp (){
   // logging middleware
   app.use(morgan('dev'))
 
+
+
+    //api route
+    app.use('/api', require('./api'))
+
+
     // static file-serving middleware
     app.use(express.static(path.join(__dirname, '..', 'public')))
 
@@ -20,9 +26,6 @@ function createApp (){
   app.use('*', (req, res, next) => {
     res.sendFile(path.join(__dirname, '..', 'public/index.html'))
   })
-
-  //api route
-  app.use('/api', require('./api'))
 
   // error handling endware
   app.use((err, req, res, next) => {
