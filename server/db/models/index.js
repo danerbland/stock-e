@@ -5,10 +5,10 @@ const Company = require('./company')
 //Table associations.
 
 User.hasMany(Order)
-Order.hasOne(User)
+// Order.hasOne(User)
 
 Company.hasMany(Order)
-Order.hasOne(User)
+// Order.hasOne(Company)
 
 module.exports = {
   User,
