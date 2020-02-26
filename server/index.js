@@ -9,15 +9,27 @@ function createApp (){
   // logging middleware
   app.use(morgan('dev'))
 
+    // static file-serving middleware
+    app.use(express.static(path.join(__dirname, '..', 'public')))
+
   // body parsing middleware
   app.use(express.json())
   app.use(express.urlencoded({extended: true}))
+
+  //tell our server to send index.html
+  app.use('*', (req, res, next) => {
+    res.sendFile(path.join(__dirname, '..', 'public/index.html'))
+  })
+
+  // error handling endware
+  app.use((err, req, res, next) => {
+    console.error(err)
+    console.error(err.stack)
+    res.status(err.status || 500).send(err.message || 'Internal server error.')
+  })
+
 }
 
-//tell our server to send index.html
-app.use('*', (req, res, next) => {
-  res.sendFile(path.join(__dirname, '..', 'public/index.html'))
-})
 
 
 function startListening () {
