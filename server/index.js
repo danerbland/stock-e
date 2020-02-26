@@ -21,6 +21,9 @@ function createApp (){
     res.sendFile(path.join(__dirname, '..', 'public/index.html'))
   })
 
+  //api route
+  app.use('/api', require('./api'))
+
   // error handling endware
   app.use((err, req, res, next) => {
     console.error(err)

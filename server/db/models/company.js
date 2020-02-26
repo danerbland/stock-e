@@ -7,6 +7,7 @@ const Company = db.define('company', {
   ticker: {
     type: Sequelize.STRING,
     allowNull: false,
+    unique: true,
     validate: {
       len: [1,5]
     }
