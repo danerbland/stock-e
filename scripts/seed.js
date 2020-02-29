@@ -66,37 +66,6 @@ const seedDb = async () => {
   await User.bulkCreate(users)
 
 
-  //Seed Portfolios (one per user)
-  const portfolios = [
-    {
-      'userId' : '1'
-    },
-    {
-      'userId' : '2'
-    },
-    {
-      'userId' : '3'
-    },
-    {
-      'userId' : '4'
-    }
-  ]
-
-  await Portfolio.bulkCreate(portfolios)
-
-  //seed some orders
-
-  const orders = [
-    {
-      'userId' : '',
-      'companyId' : '',
-      'type' :'',
-      'price' :'',
-      'quantity': ''
-    }
-  ]
-
-
 }
 
 seedDb()

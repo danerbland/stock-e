@@ -2,6 +2,8 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 const crypto = require('crypto')
 
+const Portfolio = require('./portfolio')
+
 //User model.
 
 const User = db.define('user', {
@@ -96,6 +98,22 @@ User.beforeUpdate((user) => {
 
 User.beforeBulkCreate((users) => {
   users.forEach(user => setSaltAndPassword(user))
+})
+
+//When a new user is made, make a portfolio for them
+User.afterCreate(async (user) => {
+  await Portfolio.create({
+    userId: user.id
+  })
+})
+
+//Make portfolios for bulk created users.
+User.afterBulkCreate((users) => {
+  users.forEach(async(user) => {
+    await Portfolio.create({
+      userId: user.id
+    })
+  })
 })
 
 module.exports = User

@@ -3,7 +3,6 @@ const {User} = require('../db/models')
 
 router.post('/login', async (req, res, next) => {
   try {
-    console.log('User: ', User)
     const user = await User.findOne({
       where: {
         email: req.body.email

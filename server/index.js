@@ -41,13 +41,11 @@ passport.deserializeUser(async (id, done) => {
   app.use(passport.initialize())
   app.use(passport.session())
 
-
     //api route
     app.use('/api', require('./api'))
 
     //auth route
     app.use('/auth', require('./auth'))
-
 
     // static file-serving middleware
     app.use(express.static(path.join(__dirname, '..', 'public')))
@@ -63,10 +61,7 @@ passport.deserializeUser(async (id, done) => {
     console.error(err.stack)
     res.status(err.status || 500).send(err.message || 'Internal server error.')
   })
-
 }
-
-
 
 function startListening () {
   const server = app.listen(PORT, () => {
