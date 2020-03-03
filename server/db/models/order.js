@@ -61,7 +61,9 @@ Order.beforeCreate(async (order) => {
           companyId: order.companyId
         }})
         const quantity = portfolioCompany[0].quantity + parseInt(order.quantity)
-        await portfolioCompany[0].update({quantity})
+        //calculate the new average price here.
+        const averagePrice = Math.ceil(((portfolioCompany[0].quantity * portfolioCompany[0].averagePrice) + (order.quantity * order.price)) / quantity)
+        await portfolioCompany[0].update({quantity, averagePrice})
       }
     }
     //sell here

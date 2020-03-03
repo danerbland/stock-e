@@ -26,6 +26,9 @@ router.get('/', async (req, res, next) => {
 //Post new orders.  To protect this from price manipulation, we'll confirm the stock price here rather than getting it from req.body
 router.post('/', async(req, res, next) => {
   try {
+    if(!req.user){
+      throw new Error('User is not logged in!')
+    }
     if(req.user){
       const userId = req.user.id
       const {type, quantity, companyId} = req.body
@@ -44,8 +47,8 @@ router.post('/', async(req, res, next) => {
         throw new Error(`No Pricing Information available for ${data.companyName}`)
       }
       const price = Math.ceil(parseFloat(data.latestPrice) * 100)
-      console.log('new price: ', price)
 
+      //Create the order
       const order = await Order.create({
         type,
         price,
