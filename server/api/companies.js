@@ -20,7 +20,7 @@ router.get('/', async (req, res, next) => {
 router.get('/ticker/:ticker', async (req, res, next) => {
   try {
     let companies = await Company.findAll({
-      limit: 10,
+      limit: 5,
       where: {
         ticker: {
           [Op.iLike]: req.params.ticker + '%'

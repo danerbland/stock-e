@@ -8,3 +8,9 @@
   background-color: #FFFFFFdd;
   padding: 20px;
 }
+
+.sbli-container{
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
