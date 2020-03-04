@@ -25,6 +25,7 @@ router.get('/', async (req, res, next) => {
         const {data} = await axios.get(requestURL)
         console.log('data: ', data)
         row.dataValues.currentPrice = Math.floor(parseFloat(data.latestPrice) * 100)
+        row.dataValues.companyName = data.companyName
       }
 
       res.json(portfolio)
