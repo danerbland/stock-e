@@ -29,7 +29,10 @@ passport.deserializeUser(async (id, done) => {
   }
 })
 
-      // session middleware with passport
+  // compression middleware
+  app.use(compression())
+
+  // session middleware with passport
   app.use(
     session({
       secret: process.env.SESSION_SECRET || 'my best friend is Cody',
@@ -40,6 +43,7 @@ passport.deserializeUser(async (id, done) => {
   )
   app.use(passport.initialize())
   app.use(passport.session())
+  app.use(passport.session())
 
     //api route
     app.use('/api', require('./api'))
@@ -49,6 +53,17 @@ passport.deserializeUser(async (id, done) => {
 
     // static file-serving middleware
     app.use(express.static(path.join(__dirname, '..', 'public')))
+
+      // any remaining requests with an extension (.js, .css, etc.) send 404
+  app.use((req, res, next) => {
+    if (path.extname(req.path).length) {
+      const err = new Error('Not found')
+      err.status = 404
+      next(err)
+    } else {
+      next()
+    }
+  })
 
   //tell our server to send index.html
   app.use('*', (req, res, next) => {
@@ -72,12 +87,20 @@ function startListening () {
 const syncDb = () => db.sync()
 
 async function bootApp () {
+  try{
   await sessionStore.sync()
   await syncDb()
   await createApp()
   await startListening()
+} catch(e){
+  console.log(e)
+}
 }
 
-bootApp();
+if (require.main === module) {
+  bootApp()
+} else {
+  createApp()
+}
 
 module.exports = app
