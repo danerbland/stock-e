@@ -41,11 +41,14 @@ button:hover{
   flex-direction: column;
 }
 
-
+#router-container{
+  display: flex;
+  flex-flow: row wrap;
+}
 
 #background-image{
   margin: auto;
-  position: absolute;
+  position: fixed;
   justify-self: center;
   align-self: center;
   top:40%;

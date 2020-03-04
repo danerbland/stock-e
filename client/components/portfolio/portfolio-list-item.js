@@ -3,11 +3,11 @@ import React from 'react'
 const PortfolioListItem = (props) => {
 
   const {quantity, averagePrice} = props.company.portfolioCompany
-  const {ticker, companyName, currentPrice} = props.company
-  const diffPerShare = (averagePrice - currentPrice) /100
+  const {ticker, companyName, currentPrice, change, changePercent} = props.company
+  const diffPerShare = (currentPrice - averagePrice)
   const totalChange = (quantity * diffPerShare /100)
 
-  const pricePrefix = totalChange >= 0 ? '+' : '-'
+  const pricePrefix = totalChange >= 0 ? '+' : ''
 
   return(
     <div className ='portfolio-list-item'>
@@ -16,10 +16,13 @@ const PortfolioListItem = (props) => {
         <h3>{companyName}</h3>
       </div>
       <div className='pli-info'>
-      <p>shares: {quantity}</p>
-      <p>current price: {currentPrice}</p>
-      <p>share price </p>
-      <p>since purchase: {pricePrefix} {totalChange}</p>
+        <p className='pli-attribute'>Today's gain/loss: <br/>${change * quantity}</p>
+        <p className='pli-attribute'>Total gain/loss: <br/>{pricePrefix} ${totalChange}</p>
+        <p className='pli-attribute'>Current Value: <br/>${currentPrice * quantity / 100}</p>
+        <p className='pli-attribute'>Shares: <br/>{quantity}</p>
+        <p className='pli-attribute'>Current price: <br/>${currentPrice /100}</p>
+        <p className='pli-attribute'>Cost Basis: <br/>${averagePrice / 100}/share</p>
+
 
       </div>
       <button onClick={() => props.tradeCompany(ticker)}>Trade</button>

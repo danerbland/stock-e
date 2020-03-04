@@ -7,3 +7,4 @@
 
 export {Login, Signup} from './auth/auth-form'
 export {Portfolio} from './portfolio'
+export {Trade} from './trade'

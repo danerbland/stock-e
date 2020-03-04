@@ -6,7 +6,8 @@ import PropTypes from 'prop-types'
 import {
   Login,
   Signup,
-  Portfolio
+  Portfolio,
+  Trade
 } from './components'
 import {me} from './store'
 import history from './history'
@@ -34,7 +35,7 @@ class Routes extends React.Component {
             <Router history={history}>
               {/* Routes placed here are only available after logging in */}
               <Route path='/portfolio' component={Portfolio}/>
-              {/* <Route path="/home" component={UserHome} /> */}
+              <Route component={Trade}/>
             </Router>
           )}
 

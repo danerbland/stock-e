@@ -26,6 +26,8 @@ router.get('/', async (req, res, next) => {
         console.log('data: ', data)
         row.dataValues.currentPrice = Math.floor(parseFloat(data.latestPrice) * 100)
         row.dataValues.companyName = data.companyName
+        row.dataValues.change = data.change
+        row.dataValues.changePercent = data.changePercent
       }
 
       res.json(portfolio)

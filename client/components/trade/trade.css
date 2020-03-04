@@ -1,0 +1,10 @@
+#trade-container{
+  width: 40%;
+  min-width: 400px;
+  margin: 20px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  border-radius: 5px;
+  height: 80%;
+  background-color: #FFFFFFdd;
+  padding: 20px;
+}

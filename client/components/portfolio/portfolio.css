@@ -5,4 +5,19 @@
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   border-radius: 5px;
   height: 80%;
+  background-color: #FFFFFFdd;
+  padding: 20px;
+}
+
+.pli-info{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  padding: 0px, 20px, 0px, 20px;
+}
+
+.pli-attribute{
+  width: 30%;
+  min-width: 150px;
+  margin: 0, 5px, 0, 5px;
 }
