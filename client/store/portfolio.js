@@ -17,7 +17,7 @@ const defaultPortfolio = []
  * ACTION CREATORS
  */
 const getPortfolio = portfolio => ({type: GET_PORTFOLIO, portfolio})
-const removePortfolio = () => ({type: REMOVE_PORTFOLIO})
+export const removePortfolio = () => ({type: REMOVE_PORTFOLIO})
 
 /**
  * THUNK CREATORS
@@ -26,7 +26,8 @@ const removePortfolio = () => ({type: REMOVE_PORTFOLIO})
 export const getPortfolioThunkCreator = () => async dispatch => {
   try {
     const {data} = await axios.get('/api/portfolios/')
-    dispatch(getPortfolio(data))
+    console.log("in thunk. data: ", data.companies)
+    dispatch(getPortfolio(data.companies))
   } catch (error) {
     console.error(error)
   }
@@ -38,7 +39,7 @@ export const getPortfolioThunkCreator = () => async dispatch => {
 export default function(state = defaultPortfolio, action) {
   switch (action.type) {
     case GET_PORTFOLIO:
-      return action.user
+      return action.portfolio
     case REMOVE_PORTFOLIO:
       return defaultPortfolio
     default:

@@ -16,7 +16,7 @@ const defaultCompany = {}
  */
 
 const getCompany = company => ({type: GET_COMPANY, company})
-const removeCompany = () => ({type: REMOVE_USER})
+const removeCompany = () => ({type: REMOVE_COMPANY})
 
 /**
  * THUNK CREATORS

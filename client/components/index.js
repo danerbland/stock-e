@@ -6,3 +6,4 @@
 
 
 export {Login, Signup} from './auth/auth-form'
+export {Portfolio} from './portfolio'

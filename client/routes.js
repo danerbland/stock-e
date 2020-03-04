@@ -5,9 +5,11 @@ import PropTypes from 'prop-types'
 
 import {
   Login,
-  Signup
+  Signup,
+  Portfolio
 } from './components'
 import {me} from './store'
+import history from './history'
 
 class Routes extends React.Component {
   componentDidMount() {
@@ -29,10 +31,11 @@ class Routes extends React.Component {
           )}
 
           {isLoggedIn && (
-            <Switch>
+            <Router history={history}>
               {/* Routes placed here are only available after logging in */}
+              <Route path='/portfolio' component={Portfolio}/>
               {/* <Route path="/home" component={UserHome} /> */}
-            </Switch>
+            </Router>
           )}
 
       </div>

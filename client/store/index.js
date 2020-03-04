@@ -4,10 +4,12 @@ import thunkMiddleware from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import user from './user'
 import singleCompany from './single-company'
+import portfolio from './portfolio'
 
 const reducer = combineReducers({
   user,
   singleCompany,
+  portfolio,
 
 })
 const middleware = composeWithDevTools(
