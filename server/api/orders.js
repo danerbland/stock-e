@@ -3,8 +3,8 @@ const axios = require('axios')
 
 const {Order, Company} = require('../db/models')
 
-// if (process.env.NODE_ENV === 'development') {
-//   require('../../secrets')}
+if (process.env.NODE_ENV === 'development') {
+  require('../../secrets')}
 
 router.get('/', async (req, res, next) => {
   try {

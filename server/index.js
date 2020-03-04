@@ -29,8 +29,6 @@ passport.deserializeUser(async (id, done) => {
   }
 })
 
-  // compression middleware
-  app.use(compression())
 
   // session middleware with passport
   app.use(
