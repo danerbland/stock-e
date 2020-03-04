@@ -1,0 +1,56 @@
+#welcome-message{
+  margin-bottom: 0px;
+}
+
+#auth-container{
+  width: 100%;
+  display: flex;
+  padding: 40px;
+  flex-direction: column;
+  align-items: center;
+}
+
+#auth-form{
+  width: 40%;
+  min-width: 400px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: left;
+  justify-content: space-between;
+  padding: 40px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  background: var(--off-white-opaque);
+}
+
+#auth-buttons{
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+#alternative-message{
+  margin-top: 40px;
+}
+
+.auth-button{
+  align-self: center;
+  width: 50%;
+  min-width: 100px;
+}
+
+
+label{
+  margin: 10px;
+  font-size: 1.5em;
+}
+
+input{
+  width: 90%;
+  height: 40px;
+  padding: 10px;
+  margin-right: 20px;
+  border-radius: 5px;
+  border: 1px solid var(--pistachio-opaque);
+}

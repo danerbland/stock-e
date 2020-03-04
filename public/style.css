@@ -1,0 +1,75 @@
+:root {
+  --medium-green: #20944f;
+  --dark-green: #16703b;
+  --pistachio: #94cc76;
+  --light-green: #2cbd67;
+  --off-white: #f3f3f3;
+  --medium-green-opaque: #20944fcc;
+  --dark-green-opaque: #16703bcc;
+  --pistachio-opaque: #94cc76cc;
+  --light-green-opaque: #2cbd67cc;
+  --off-white-opaque: #f3f3f3cc;
+  --medium-green-clear: #20944f00;
+  --dark-green-clear: #16703b00;
+  --pistachio-clear: #94cc7600;
+  --light-green-clear: #2cbd6700;
+  --off-white-clear: #f3f3f300;
+}
+
+*{
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+button{
+  height: 40px;
+  background-color:var(--off-white);
+  color: black;
+  transition: .5s;
+  border-radius: 5px;
+}
+
+button:hover{
+  transform: scale(1.1);
+  color: whitesmoke;
+  background-color: var(--dark-green-opaque);
+  transition: .5s
+}
+
+#top-container{
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+#background-image{
+  margin: auto;
+  position: absolute;
+  justify-self: center;
+  align-self: center;
+  top:40%;
+  background-image: url('./assets/icons/logo.png');
+  height: 200px;
+  width: 200px;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+.fadein{
+  animation-name: fade;
+  animation-duration: 1.5s;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+}
+
+
+@keyframes fade{
+  0%{
+    opacity: 1;
+  }
+  100%{
+    opacity: .5;
+  }
+}

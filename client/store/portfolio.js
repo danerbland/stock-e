@@ -23,7 +23,7 @@ const removePortfolio = () => ({type: REMOVE_PORTFOLIO})
  * THUNK CREATORS
  */
 
-const getPortfolioThunkCreator = () => async dispatch => {
+export const getPortfolioThunkCreator = () => async dispatch => {
   try {
     const {data} = await axios.get('/api/portfolios/')
     dispatch(getPortfolio(data))

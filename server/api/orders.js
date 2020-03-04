@@ -29,7 +29,7 @@ router.post('/', async(req, res, next) => {
     if(!req.user){
       throw new Error('User is not logged in!')
     }
-    if(req.user){
+    else {
       const userId = req.user.id
       const {type, quantity, companyId} = req.body
 
@@ -57,8 +57,6 @@ router.post('/', async(req, res, next) => {
         companyId,
       })
       res.json(order)
-    } else {
-      throw 'User is not logged in'
     }
   } catch (err) {
     next(err)
