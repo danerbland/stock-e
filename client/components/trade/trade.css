@@ -13,4 +13,34 @@
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
+  transition: .5s;
+  padding: 0px, 10px, 0px, 10px;
+  border-radius: 5px;
+}
+
+.sbli-container:hover{
+  background-color: var(--pistachio-opaque);
+  transform: scale(1.05);
+  transition: .5s;
+}
+
+#trade-form{
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: left;
+}
+
+#tf-select{
+  height: 40px;
+  width: 120px;
+}
+
+#tf-shares{
+  align-self: flex-start;
+  width: 80px;
+}
+
+#tf-order-button{
+  width: 40%;
+  margin-top: 20px;
 }

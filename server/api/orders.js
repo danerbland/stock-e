@@ -10,11 +10,15 @@ router.get('/', async (req, res, next) => {
   try {
     if(req.user){
       const userId = req.user.id
-      const orders = Order.findAll({
+      const orders = await Order.findAll({
         where: {
           userId
-        }
+        },
+        include:[{
+          model: Company
+        }]
       })
+      console.log('in api. orders: ', orders)
       res.json(orders)
     } else {
       throw new Error('User is not logged in')
@@ -34,6 +38,9 @@ router.post('/', async(req, res, next) => {
     else {
       const userId = req.user.id
       const {type, quantity, companyId} = req.body
+
+      console.log("in the route. req.body:", req.body)
+
 
       //Get the company's ticker internally to avoid manipulation
       const {ticker} = await Company.findByPk(companyId)

@@ -2,7 +2,7 @@ import React from 'react'
 
 const PortfolioListItem = (props) => {
 
-  const {quantity, averagePrice} = props.company.portfolioCompany
+  const {quantity, averagePrice, companyId} = props.company.portfolioCompany
   const {ticker, companyName, currentPrice, change, changePercent} = props.company
   const diffPerShare = (currentPrice - averagePrice)
   const totalChange = (quantity * diffPerShare /100)
@@ -25,7 +25,7 @@ const PortfolioListItem = (props) => {
 
 
       </div>
-      <button onClick={() => props.tradeCompany(ticker)}>Trade</button>
+      <button onClick={() => props.tradeCompany(ticker, companyId)}>Trade</button>
     </div>
   )
 }

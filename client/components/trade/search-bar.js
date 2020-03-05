@@ -44,6 +44,12 @@ export default class SearchBar extends React.Component{
           error: error.message
         })
       }
+    } else {
+      this.setState({
+        ticker,
+        companies:[],
+        error: 'No Company Found'
+      })
     }
   }
 
@@ -64,6 +70,7 @@ export default class SearchBar extends React.Component{
             <input
               type="text"
               name="ticker"
+              value={this.state.ticker}
               className="search-bar-input"
               placeholder="Company Ticker"
               onChange={this.handleChange}
@@ -71,7 +78,7 @@ export default class SearchBar extends React.Component{
           </form>
         {this.state.error.length? <p>{this.state.error}</p> : <br/>}
         <div id = 'search-bar-list'>
-          {this.state.companies.map((company) => <SearchBarListItem company={company} setCompany={this.props.setCompany} clickHandler={this.clickHanlder}/>)}
+          {this.state.companies.map((company) => <SearchBarListItem key={company.ticker} company={company} setCompany={this.props.setCompany} clickHandler={this.clickHanlder}/>)}
         </div>
       </div>
     )

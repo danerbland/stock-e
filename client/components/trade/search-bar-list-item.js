@@ -2,11 +2,11 @@ import React from 'react'
 
 const SearchBarListItem = (props) => {
 
-  const{ticker, name} = props.company
+  const{id, ticker, name} = props.company
 
   return(
     <div className = 'sbli-container' onClick={() => {
-      props.setCompany(ticker)
+      props.setCompany(ticker, id)
       props.clickHandler(ticker)
     }}>
         <h2>{ticker}</h2>

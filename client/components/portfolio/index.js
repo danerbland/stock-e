@@ -17,8 +17,8 @@ class DisconnectedPortfolio extends React.Component{
     this.setCompanyToTrade = this.setCompanyToTrade.bind(this)
   }
 
-  setCompanyToTrade = (ticker) => {
-    this.props.setCompany(ticker)
+  setCompanyToTrade = (ticker, id) => {
+    this.props.setCompany(ticker, id)
   }
 
   async componentDidMount(){
@@ -33,7 +33,8 @@ class DisconnectedPortfolio extends React.Component{
 
     return (
     <div id = 'portfolio-container'>
-      <h1>My Portfolio</h1>
+      <h1>My Portfolio.</h1>
+      <h2>Cash: ${this.props.user.cash/100}</h2>
       <div className = 'divider'></div>
       <div className = 'portfolio-list-container'>
         {this.props.portfolio.map (element => {
@@ -49,12 +50,13 @@ class DisconnectedPortfolio extends React.Component{
 
 
 const mapStateToProps = state => ({
-  portfolio: state.portfolio
+  portfolio: state.portfolio,
+  user: state.user
 })
 const mapDispatchToProps = dispatch => ({
   getPortfolio: () => dispatch(getPortfolioThunkCreator()),
   removePortfolio: () => dispatch(removePortfolio()),
-  setCompany: (ticker) => dispatch(getCompanyThunkCreator(ticker))
+  setCompany: (ticker, id) => dispatch(getCompanyThunkCreator(ticker, id))
 })
 
 export const Portfolio = connect(mapStateToProps, mapDispatchToProps)(

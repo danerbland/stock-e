@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 
 import { getCompanyThunkCreator} from '../../store/single-company'
 import SearchBar from './search-bar'
+import TradeForm from './trade-form'
 
 import './trade.css'
 
@@ -18,6 +19,7 @@ class DisconnectedTrade extends React.Component{
     <div id='trade-container'>
       <h1>Trade</h1>
       <SearchBar setCompany={this.props.setCompany}/>
+      {this.props.company.symbol? <TradeForm /> : <br/>}
     </div>)
   }
 }
@@ -27,7 +29,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  setCompany: (ticker) => dispatch(getCompanyThunkCreator(ticker))
+  setCompany: (ticker, id) => dispatch(getCompanyThunkCreator(ticker, id))
 })
 
 export const Trade = connect(mapStateToProps, mapDispatchToProps)(DisconnectedTrade)

@@ -59,6 +59,14 @@ button:hover{
   z-index: -1;
 }
 
+.divider{
+  margin: 0px;
+  width: 90%;
+  align-self: center;
+  height: 10px;
+  background-color: var(--dark-green-opaque)
+}
+
 .fadein{
   animation-name: fade;
   animation-duration: 1.5s;
