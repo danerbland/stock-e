@@ -3,6 +3,7 @@ import history from '../history'
 import store from './'
 
 import {getPortfolioThunkCreator} from './portfolio'
+import {me} from './user'
 
 /**
  * ACTION TYPES
@@ -40,6 +41,7 @@ export const postOrderThunkCreator = (reqBody) => async dispatch => {
     const {data} = await axios.post('/api/orders/', reqBody)
     dispatch(getOrdersThunkCreator())
     dispatch(getPortfolioThunkCreator())
+    dispatch(me())
   } catch (error) {
     console.error(error)
   }
