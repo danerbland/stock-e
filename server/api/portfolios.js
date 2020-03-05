@@ -23,7 +23,6 @@ router.get('/', async (req, res, next) => {
       for(row of portfolio.companies){
         const requestURL = process.env.IEX_API_ENDPOINT + row.ticker + '/quote?token=' + process.env.IEX_API_KEY
         const {data} = await axios.get(requestURL)
-        console.log('data: ', data)
         row.dataValues.currentPrice = Math.floor(parseFloat(data.latestPrice) * 100)
         row.dataValues.companyName = data.companyName
         row.dataValues.change = data.change

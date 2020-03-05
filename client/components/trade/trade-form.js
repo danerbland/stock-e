@@ -49,13 +49,29 @@ class DisconnectedTradeForm extends React.Component{
   render(){
     const {symbol, companyName, primaryExchange, latestPrice, change, changePercent, volume} = this.props.company
 
+
+    //create an error message for front end validation.
     let errorMessage = ''
 
-    if(type ==="buy" && this.props.user.cash < (this.state.quantity * latestPrice * 100)){
-    const errorMessage = "You don't have enough cash to cover this!"
-    } else if( type ==='sell'){
-      if(this.props.portfolio)
-    }
+    if(this.state.type === "buy" && this.props.user.cash < (this.state.quantity * latestPrice * 100)){
+      errorMessage = "You don't have enough cash to cover this!"
+    } else if(this.state.type === 'sell'){
+      let amtOwned = this.props.portfolio.reduce((accumulator, company) => {
+        if(company.ticker === symbol){
+          return accumulator + company.portfolioCompany.quantity
+        } else{
+          return accumulator
+        }
+      }, 0)
+
+      if(!amtOwned){
+        errorMessage = "You don't own this company!"
+      } else if(amtOwned < this.state.quantity){
+        errorMessage = "You don't own this many shares!"
+      }
+    }//endif
+
+    const isSubmittable = errorMessage.length ? false : true;
 
 
     return(
@@ -83,7 +99,7 @@ class DisconnectedTradeForm extends React.Component{
           <label htmlFor='quantity'>Shares</label>
           <input id='tf-shares' name='quantity' type='number' min='1' onChange={this.handleChange} value={this.state.quantity}></input>
           <p className='error-message'>{errorMessage}</p>
-          <button id = 'tf-order-button' type='submit'>Order</button>
+          <button id = 'tf-order-button' type='submit' disabled={!isSubmittable}>Order</button>
         </form>
       </div>
     )
