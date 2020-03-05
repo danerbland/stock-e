@@ -5,31 +5,25 @@ import {Link} from 'react-router-dom'
 import {logout} from '../store'
 import './navbar.css'
 
-const DisconnectedNavBar = ({handleClick, isLoggedIn}) => (
+const DisconnectedNavBar = ({logOut, isLoggedIn}) => (
   <div className="nav-container">
     <h1 className="nav-header">s t o c k - e</h1>
     <div className="divider" />
     <h3 className="nav-sub-header">Stocks made easy. Again.</h3>
-\
-
     <nav className="login-nav">
       {isLoggedIn ? (
-        <div>
+        <div className = 'nav-menu'>
           {/* The navbar will show these links after you log in */}
           <div>
-          <Link to="/portfolio">Portfolio</Link>
-          <Link to="/orders">Orders</Link>
+          <Link className = 'nav-link' to="/portfolio">Portfolio</Link>
+          <Link className = 'nav-link' to="/orders">Orders</Link>
           </div>
-          <a href="#" onClick={handleClick}>
+          <a className = 'nav-link' href="#" onClick={logOut}>
             Logout
           </a>
         </div>
       ) : (
-        <div>
-          {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
-        </div>
+        <br/>
       )}
     </nav>
     <hr />
@@ -50,6 +44,6 @@ export const NavBar =  connect(mapStateToProps, mapDispatchToProps)(Disconnected
  * PROP TYPES
  */
 DisconnectedNavBar.propTypes = {
-  handleClick: PropTypes.func.isRequired,
+  logOut: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired
 }

@@ -19,7 +19,7 @@ const OrderListItem = (props) => {
       </div>
       <div className='pli-info'>
         <p className='pli-attribute'>{type}: <br/>{quantity} shares</p>
-        <p className='pli-attribute'>price: <br/>${price}</p>
+        <p className='pli-attribute'>price: <br/>${price/100}</p>
 
 
 
