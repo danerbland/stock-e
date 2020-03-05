@@ -9,7 +9,7 @@ const Portfolio = require('./portfolio')
 const User = db.define('user', {
   name: {
     type: Sequelize.STRING,
-    allowNull: false,
+    allowNull: true,
     validate: {
       isAlpha: true,
     }
