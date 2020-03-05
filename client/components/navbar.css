@@ -1,8 +1,25 @@
+.navbar-side-links{
+  width: 200px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+
+.nav-sub-header{
+  width: 300px;
+  align-self: center;
+  justify-self: center;
+  text-align: center;
+}
+
+
+
 .nav-container{
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 100%;
 }
 
@@ -24,5 +41,19 @@
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
+}
+
+.nav-link{
+  color: var(--medium-green);
+  transition: .5s;
+  text-decoration: none;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.nav-link:hover{
+  background-color: var(--dark-green);
+  color: white;
+  transition: .5s;
 }

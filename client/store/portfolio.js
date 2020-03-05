@@ -26,7 +26,6 @@ export const removePortfolio = () => ({type: REMOVE_PORTFOLIO})
 export const getPortfolioThunkCreator = () => async dispatch => {
   try {
     const {data} = await axios.get('/api/portfolios/')
-    console.log("in thunk. data: ", data.companies)
     dispatch(getPortfolio(data.companies))
   } catch (error) {
     console.error(error)

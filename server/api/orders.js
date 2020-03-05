@@ -18,13 +18,11 @@ router.get('/', async (req, res, next) => {
           model: Company
         }]
       })
-      console.log('in api. orders: ', orders)
       res.json(orders)
     } else {
       throw new Error('User is not logged in')
     }
   } catch (err) {
-    console.log('error here!')
     next(err)
   }
 })
@@ -39,12 +37,8 @@ router.post('/', async(req, res, next) => {
       const userId = req.user.id
       const {type, quantity, companyId} = req.body
 
-      console.log("in the route. req.body:", req.body)
-
-
       //Get the company's ticker internally to avoid manipulation
       const {ticker} = await Company.findByPk(companyId)
-      console.log("ticker: ", ticker)
 
       //confirm the price here from the API
       const requestURL = process.env.IEX_API_ENDPOINT + ticker + '/quote?token=' + process.env.IEX_API_KEY

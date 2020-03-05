@@ -22,14 +22,11 @@ class DisconnectedPortfolio extends React.Component{
   }
 
   async componentDidMount(){
-    console.log('portfolio mounted')
     this.props.getPortfolio()
     await this.props.getPortfolio()
   }
 
   render(){
-
-    console.log('rendering... portfolio: ', this.props.portfolio)
 
     return (
     <div id = 'portfolio-container'>
@@ -38,8 +35,6 @@ class DisconnectedPortfolio extends React.Component{
       <div className = 'divider'></div>
       <div className = 'portfolio-list-container'>
         {this.props.portfolio.map (element => {
-
-        console.log("mapping over: ", element)
         return (<PortfolioListItem company={element} tradeCompany={this.setCompanyToTrade} key={element.ticker}/>)}
           )}
       </div>

@@ -63,7 +63,6 @@ export default class SearchBar extends React.Component{
   }
 
   render(){
-    console.log('state: ', this.state)
     return(
       <div id = 'search-bar'>
         <form autoComplete="off" className="search-bar-form">

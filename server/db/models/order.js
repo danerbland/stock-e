@@ -39,7 +39,6 @@ Order.beforeCreate(async (order) => {
 
   try {
     const user = await User.findByPk(order.userId)
-    console.log('beforeCreate. user: ', user)
     if(!user){
       throw new Error('Invalid user Id!')
     }
@@ -68,7 +67,6 @@ Order.beforeCreate(async (order) => {
     }
     //sell here
     else {
-      console.log('in sell')
       const portfolio = await Portfolio.findOne({where: {userId : user.id}})
       const portfolioCompany = await PortfolioCompany.findOne({where: {
         portfolioId: portfolio.id,
@@ -81,7 +79,6 @@ Order.beforeCreate(async (order) => {
       }
       //if they are trying to sell more than they have, throw an error
       if(portfolioCompany.quantity < order.quantity){
-        console.log('throwing new error!')
         throw new Error('You don\'t own enough of this company!')
       }
       //otherwise, add the sale to the user's cash and update the portfolio

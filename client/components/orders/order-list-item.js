@@ -2,8 +2,6 @@ import React from 'react'
 
 const OrderListItem = (props) => {
 
-  console.log(props.order)
-
   const {type, price, quantity, createdAt} = props.order
   const {ticker, name} = props.order.company
 

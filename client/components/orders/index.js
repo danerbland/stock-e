@@ -19,7 +19,6 @@ class DisconnectedOrders extends React.Component{
 
   render(){
 
-    console.log('rendering orders')
 
     return (
     <div id = 'order-container'>

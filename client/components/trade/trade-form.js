@@ -34,14 +34,12 @@ class DisconnectedTradeForm extends React.Component{
 
   submitHandler = (event) => {
     event.preventDefault()
-    console.log(event)
     const data = {
       type: this.state.type,
       quantity: this.state.quantity,
       companyId: this.props.company.companyId
     }
     try {
-      console.log('sending data')
       this.props.postOrder(data)
     } catch (error) {
       console.error(error)
@@ -50,6 +48,15 @@ class DisconnectedTradeForm extends React.Component{
 
   render(){
     const {symbol, companyName, primaryExchange, latestPrice, change, changePercent, volume} = this.props.company
+
+    let errorMessage = ''
+
+    if(type ==="buy" && this.props.user.cash < (this.state.quantity * latestPrice * 100)){
+    const errorMessage = "You don't have enough cash to cover this!"
+    } else if( type ==='sell'){
+      if(this.props.portfolio)
+    }
+
 
     return(
       <div id='trade-form-container'>
@@ -75,6 +82,7 @@ class DisconnectedTradeForm extends React.Component{
             </select>
           <label htmlFor='quantity'>Shares</label>
           <input id='tf-shares' name='quantity' type='number' min='1' onChange={this.handleChange} value={this.state.quantity}></input>
+          <p className='error-message'>{errorMessage}</p>
           <button id = 'tf-order-button' type='submit'>Order</button>
         </form>
       </div>
@@ -85,7 +93,8 @@ class DisconnectedTradeForm extends React.Component{
 
 const mapStateToProps = state => ({
   company: state.singleCompany,
-  portfolio: state.portfolio
+  portfolio: state.portfolio,
+  user: state.user
 })
 
 const mapDispatchToProps = dispatch => ({
