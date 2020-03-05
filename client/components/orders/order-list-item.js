@@ -10,18 +10,16 @@ const OrderListItem = (props) => {
 
   return(
     <div className ='order-list-item'>
-      <div className='oli-header'>
       <p>{date.toUTCString()}</p>
+      <div className = 'oli-info-row'>
         <h3>{ticker}</h3>
         <h4>{name}</h4>
       </div>
-      <div className='pli-info'>
-        <p className='pli-attribute'>{type}: <br/>{quantity} shares</p>
-        <p className='pli-attribute'>price: <br/>${price/100}</p>
-
-
-
+      <div className = 'oli-info-row'>
+      <p className='oli-attribute'>{type}: {quantity} shares</p>
+        <p className='oli-attribute'>price: ${price/100}</p>
       </div>
+      <div className = 'order-divider'></div>
     </div>
   )
 }

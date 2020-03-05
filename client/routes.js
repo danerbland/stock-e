@@ -35,8 +35,13 @@ class Routes extends React.Component {
           {isLoggedIn && (
             <Router history={history}>
               {/* Routes placed here are only available after logging in */}
+
+              {/* Switch for the left half of the page.  default to showing portfolio when logged in. */}
+              <Switch>
               <Route path='/orders' component={Orders}/>
               <Route path='/portfolio' component={Portfolio}/>
+              <Route component = {Portfolio}/>
+              </Switch>
 
               <Route component={Trade}/>
             </Router>

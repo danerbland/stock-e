@@ -15,6 +15,19 @@ class DisconnectedPortfolio extends React.Component{
   constructor(props){
     super()
     this.setCompanyToTrade = this.setCompanyToTrade.bind(this)
+    this.refreshPortfolio = this.refreshPortfolio.bind(this)
+    this.clickHandler = this.clickHandler.bind(this)
+  }
+
+  //TODO make button rotate every time. Currently rotates on odd click numbers.
+  clickHandler = async(event) => {
+    const classList = event.target.classList
+    classList.toggle('rotate')
+    await this.refreshPortfolio()
+  }
+
+  refreshPortfolio = () => {
+    this.props.getPortfolio()
   }
 
   setCompanyToTrade = (ticker, id) => {
@@ -22,7 +35,6 @@ class DisconnectedPortfolio extends React.Component{
   }
 
   async componentDidMount(){
-    this.props.getPortfolio()
     await this.props.getPortfolio()
   }
 
@@ -30,7 +42,10 @@ class DisconnectedPortfolio extends React.Component{
 
     return (
     <div id = 'portfolio-container'>
-      <h1>My Portfolio.</h1>
+      <div id= 'portfolio-top-row'>
+        <h1>My Portfolio.</h1>
+        <img src='./assets/icons/refresh.png' onClick={this.clickHandler} id='portfolio-refresh-button'/>
+      </div>
       <h2>Cash: ${this.props.user.cash/100}</h2>
       <div className = 'divider'></div>
       <div className = 'portfolio-list-container'>

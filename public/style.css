@@ -79,6 +79,10 @@ button:hover{
   animation-timing-function: ease-out;
 }
 
+.tab{
+  width: 40px;
+  display: inline-block
+}
 
 @keyframes fade{
   0%{
