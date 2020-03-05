@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import {getOrdersThunkCreator, clearOrders } from '../../store/portfolio'
+import {getOrdersThunkCreator, clearOrders } from '../../store/orders'
 
 import OrderListItem from './order-list-item'
 
@@ -19,14 +19,16 @@ class DisconnectedOrders extends React.Component{
 
   render(){
 
+    console.log('rendering orders')
+
     return (
-    <div id = 'portfolio-container'>
+    <div id = 'order-container'>
       <h1>My Order History.</h1>
       <div className = 'divider'></div>
       <div className = 'order-list-container'>
-        {this.props.orders.map (order => {
+      {this.props.orders.map (order => {
         return (<OrderListItem order={order} key={order.id}/>)}
-          )}
+      )}
       </div>
 
     </div>
@@ -42,6 +44,4 @@ const mapDispatchToProps = dispatch => ({
   clearOrders: () => dispatch(clearOrders()),
 })
 
-export const Orders = connect(mapStateToProps, mapDispatchToProps)(
-  DisconnectedOrders
-)
+export const Orders = connect(mapStateToProps, mapDispatchToProps)(DisconnectedOrders)

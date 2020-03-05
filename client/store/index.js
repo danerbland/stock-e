@@ -5,12 +5,13 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import user from './user'
 import singleCompany from './single-company'
 import portfolio from './portfolio'
+import orders from './orders'
 
 const reducer = combineReducers({
   user,
   singleCompany,
   portfolio,
-
+  orders
 })
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))

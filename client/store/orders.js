@@ -28,7 +28,7 @@ export const clearOrders = () => ({type: CLEAR_ORDERS})
 export const getOrdersThunkCreator = () => async dispatch => {
   try {
     const {data} = await axios.get('/api/orders/')
-    dispatch(getPortfolio(data.companies))
+    dispatch(getOrders(data))
   } catch (error) {
     console.error(error)
   }
@@ -51,7 +51,7 @@ export const postOrderThunkCreator = (reqBody) => async dispatch => {
 export default function(state = defaultOrders, action) {
   switch (action.type) {
     case GET_ORDERS:
-      return action.portfolio
+      return action.orders
     case CLEAR_ORDERS:
       return defaultOrders
     default:

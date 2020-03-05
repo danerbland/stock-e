@@ -7,7 +7,8 @@ import {
   Login,
   Signup,
   Portfolio,
-  Trade
+  Trade,
+  Orders
 } from './components'
 import {me} from './store'
 import history from './history'
@@ -34,7 +35,9 @@ class Routes extends React.Component {
           {isLoggedIn && (
             <Router history={history}>
               {/* Routes placed here are only available after logging in */}
+              <Route path='/orders' component={Orders}/>
               <Route path='/portfolio' component={Portfolio}/>
+
               <Route component={Trade}/>
             </Router>
           )}
