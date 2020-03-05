@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {Navbar} from './components'
+import {NavBar} from './components'
 import Routes from './routes'
 
 const App = () => {
@@ -10,7 +10,7 @@ const App = () => {
   return (
     <div id='top-container'>
       <div id="background-image" className="background-image fadein" />
-      {/* <Navbar /> */}
+      <NavBar />
       <Routes />
     </div>
   )

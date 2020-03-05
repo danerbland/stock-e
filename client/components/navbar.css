@@ -1,0 +1,11 @@
+.nav-container{
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.nav-header{
+  color: var(--dark-green)
+}
