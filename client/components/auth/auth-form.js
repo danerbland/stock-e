@@ -21,17 +21,20 @@ class AuthForm extends React.Component {
     this.onChange.bind(this)
   }
 
+  //react form change lister
   onChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     })
   }
 
-
   render(){
   const {name, displayName, handleSubmit, error} = this.props
 
   const isLogin = displayName === 'Login'
+  const validEmail = emailCheck(this.state.email)
+  const validPassword = passwordCheck(this.state.password)
+  const isSubmittable = validEmail && validPassword
   const [alternativeName, alternativeRoute, alternativeMessage] = isLogin? ["Sign Up",'/signup', 'New to stock-e?'] : ["Login",'/login', 'Already registered?']
 
 
@@ -59,8 +62,9 @@ class AuthForm extends React.Component {
           {!isLogin? <img className = 'validation-icon' src={getImageSrc(passwordCheck(this.state.password))}/>: <div></div>}
           </div>
 
+
           <div id = 'auth-buttons'>
-          <button type="submit" className = 'auth-button'>{displayName}</button>
+          <button type="submit" className = {`auth-button ${isSubmittable? '' :'background'}`} disabled={!isSubmittable}>{displayName}</button>
           <p id = 'alternative-message'>{alternativeMessage}</p>
           <Link to={alternativeRoute}><button className='auth-button'>{alternativeName}</button></Link>
           </div>

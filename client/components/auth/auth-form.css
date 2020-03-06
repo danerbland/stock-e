@@ -53,6 +53,10 @@
   width: 40px;
 }
 
+.background{
+  z-index: -1;
+}
+
 label{
   margin: 10px;
   font-size: 1.5em;
