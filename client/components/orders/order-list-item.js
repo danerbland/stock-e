@@ -17,7 +17,7 @@ const OrderListItem = (props) => {
       </div>
       <div className = 'oli-info-row'>
       <p className='oli-attribute'>{type}: {quantity} shares</p>
-        <p className='oli-attribute'>price: ${price/100}</p>
+        <p className='oli-attribute'>price: ${(price/100).toFixed(2)}</p>
       </div>
       <div className = 'order-divider'></div>
     </div>
