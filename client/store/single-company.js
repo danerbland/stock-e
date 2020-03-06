@@ -24,10 +24,7 @@ export const removeCompany = () => ({type: REMOVE_COMPANY})
 
 export const getCompanyThunkCreator = (ticker, companyId) => async(dispatch)=> {
   try {
-
-    const requestURL = process.env.IEX_API_ENDPOINT + ticker + '/quote?token=' + process.env.IEX_API_KEY
-    const response = await axios.get(requestURL)
-    const {data} = response
+    const {data} = await axios.get(`/api/companies/singleCompany/${ticker}`)
     dispatch(getCompany({...data, companyId}))
   } catch (error) {
     console.error(error)
