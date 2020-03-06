@@ -4,10 +4,12 @@ const PortfolioListItem = (props) => {
 
   const {quantity, averagePrice, companyId} = props.company.portfolioCompany
   const {ticker, companyName, currentPrice, change, changePercent} = props.company
-  const diffPerShare = (currentPrice - averagePrice)
-  const totalChange = (quantity * diffPerShare /100)
+  const diffPerShare = currentPrice - averagePrice
+  const totalChange = (quantity * diffPerShare /100).toFixed(2)
 
-  const pricePrefix = totalChange >= 0 ? '+' : ''
+  const pricePrefix = val => {
+    return parseFloat(val) > 0 ? '+' : '-'
+  }
 
   return(
     <div className ='portfolio-list-item'>
@@ -16,12 +18,12 @@ const PortfolioListItem = (props) => {
         <h3>{companyName}</h3>
       </div>
       <div className='pli-info'>
-        <p className='pli-attribute'>Today's gain/loss: <br/>${change * quantity}</p>
-        <p className='pli-attribute'>Total gain/loss: <br/>{pricePrefix} ${totalChange}</p>
-        <p className='pli-attribute'>Current Value: <br/>${currentPrice * quantity / 100}</p>
+        <p className='pli-attribute'>Today's gain/loss: <br/>{pricePrefix(change)}${Math.abs((change * quantity)).toFixed(2)}</p>
+        <p className='pli-attribute'>Total gain/loss: <br/>{pricePrefix(totalChange)} ${Math.abs(totalChange).toFixed(2)}</p>
+        <p className='pli-attribute'>Current Value: <br/>${(currentPrice * quantity / 100).toFixed(2)}</p>
         <p className='pli-attribute'>Shares: <br/>{quantity}</p>
-        <p className='pli-attribute'>Current price: <br/>${currentPrice /100}</p>
-        <p className='pli-attribute'>Cost Basis: <br/>${averagePrice / 100}/share</p>
+        <p className='pli-attribute'>Current price: <br/>${(currentPrice /100).toFixed(2)}</p>
+        <p className='pli-attribute'>Cost Basis: <br/>${(averagePrice / 100).toFixed(2)}/share</p>
 
 
       </div>
