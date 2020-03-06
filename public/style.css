@@ -71,17 +71,26 @@ button:hover{
   color: red;
 }
 
+.red{
+  color: orangered;
+}
+
+.green{
+  color: var(--medium-green);
+}
+
+.tab{
+  width: 40px;
+  display: inline-block
+}
+
+
 .fadein{
   animation-name: fade;
   animation-duration: 1.5s;
   animation-delay: 1s;
   animation-fill-mode: forwards;
   animation-timing-function: ease-out;
-}
-
-.tab{
-  width: 40px;
-  display: inline-block
 }
 
 @keyframes fade{

@@ -46,14 +46,6 @@
   animation-fill-mode: forwards;
 }
 
-.red{
-  color: orangered;
-}
-
-.green{
-  color: var(--medium-green);
-}
-
 @keyframes rotate{
 
   40%{

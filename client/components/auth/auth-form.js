@@ -9,10 +9,30 @@ import './auth-form.css'
 /**
  * COMPONENT
  */
-const AuthForm = props => {
-  const {name, displayName, handleSubmit, error} = props
+//Will use state for front-end validation
+class AuthForm extends React.Component {
 
-  const [alternativeName, alternativeRoute, alternativeMessage] = displayName === 'Login'? ["Sign Up",'/signup', 'New to stock-e?'] : ["Login",'/login', 'Already registered?']
+  constructor(props){
+    super()
+    this.state = {
+      email: '',
+      password: ''
+    }
+    this.onChange.bind(this)
+  }
+
+  onChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+
+  render(){
+  const {name, displayName, handleSubmit, error} = this.props
+
+  const isLogin = displayName === 'Login'
+  const [alternativeName, alternativeRoute, alternativeMessage] = isLogin? ["Sign Up",'/signup', 'New to stock-e?'] : ["Login",'/login', 'Already registered?']
 
 
   return (
@@ -24,13 +44,20 @@ const AuthForm = props => {
           <label htmlFor="email">
             <small>Email</small>
           </label>
-          <input name="email" type="text" />
+          <div className='input-with-validation'>
+          <input name="email" type="text" value={this.state.email} onChange={this.onChange}/>
+          {!isLogin? <img className = 'validation-icon' src={getImageSrc(emailCheck(this.state.email))}/>: <div></div>}
+
+          </div>
 
 
           <label htmlFor="password">
             <small>Password</small>
           </label>
-          <input name="password" type="password" />
+          <div className='input-with-validation'>
+          <input name="password" type="password" onChange={this.onChange}/>
+          {!isLogin? <img className = 'validation-icon' src={getImageSrc(passwordCheck(this.state.password))}/>: <div></div>}
+          </div>
 
           <div id = 'auth-buttons'>
           <button type="submit" className = 'auth-button'>{displayName}</button>
@@ -42,7 +69,23 @@ const AuthForm = props => {
         {error && error.response && <div> {error.response.data} </div>}
       </form>
     </div>
-  )
+  )}
+}
+
+//right now we will only use validation for email, but could add password as well
+const emailCheck = (email) => {
+  return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
+}
+
+const passwordCheck = (password) => {
+  if(password.length){
+    return true
+  }
+  return false
+}
+
+const getImageSrc = (val)=> {
+  return val ? './assets/icons/green-check.png' : './assets/icons/red-x.png'
 }
 
 /**

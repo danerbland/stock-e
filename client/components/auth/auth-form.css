@@ -40,6 +40,18 @@
   min-width: 100px;
 }
 
+.input-with-validation{
+  display: flex;
+  width: 100%;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.validation-icon{
+  height: 40px;
+  width: 40px;
+}
 
 label{
   margin: 10px;
