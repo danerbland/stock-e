@@ -15,6 +15,7 @@ const PortfolioListItem = (props) => {
   }
 
   const redOrGreen = val => {
+    if(val===0) return 'gray'
     return val > 0 ? 'green' : 'red'
   }
 

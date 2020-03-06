@@ -17,12 +17,13 @@ export default class SearchBar extends React.Component{
 
     this.handleChange = this.handleChange.bind(this)
     this.clickHanlder = this.clickHanlder.bind(this)
-
+    this.submitHandler = this.submitHandler.bind(this)
   }
 
   //change listener to look up all companies whose ticker starts with input.
   handleChange= async (event) =>{
-    const ticker = event.target.value
+    //don't let the ticker length get longer than 5.
+    const ticker = event.target.value.slice(0,5)
     if(ticker.length){
       try {
         const {data} = await axios.get(`/api/companies/ticker/${ticker}`)
@@ -62,10 +63,19 @@ export default class SearchBar extends React.Component{
     })
   }
 
+  submitHandler = (event) => {
+    event.preventDefault();
+    if(this.state.companies.length === 1){
+      const {ticker, id} = this.state.companies[0]
+      this.clickHanlder(ticker)
+      this.props.setCompany(ticker, id)
+    }
+  }
+
   render(){
     return(
       <div id = 'search-bar'>
-        <form autoComplete="off" className="search-bar-form">
+        <form autoComplete="off" className="search-bar-form" onSubmit={this.submitHandler}>
             <input
               type="text"
               name="ticker"

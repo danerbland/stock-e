@@ -79,6 +79,10 @@ button:hover{
   color: var(--medium-green);
 }
 
+.gray{
+  color: gray;
+}
+
 .tab{
   width: 40px;
   display: inline-block
