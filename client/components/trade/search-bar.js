@@ -23,7 +23,8 @@ export default class SearchBar extends React.Component{
   //change listener to look up all companies whose ticker starts with input.
   handleChange= async (event) =>{
     //don't let the ticker length get longer than 5.
-    const ticker = event.target.value.slice(0,5)
+    const ticker = event.target.value.slice(0,5).replace(/\W/, '')
+
     if(ticker.length){
       try {
         const {data} = await axios.get(`/api/companies/ticker/${ticker}`)
@@ -42,7 +43,7 @@ export default class SearchBar extends React.Component{
         }
       } catch (error) {
         this.setState({
-          error: error.message
+          error: 'No Company Found'
         })
       }
     } else {
