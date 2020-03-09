@@ -34,12 +34,11 @@ router.get('/ticker/:ticker', async (req, res, next) => {
   }
 })
 
-//keep our API key secret by requesting single companies from our back end.  We will not store them in our db, but will get them here and serve them to our front end.
+//keep our API key secret by requesting single companies from our back end.  We will not store them in our db, but will get them on the back end and serve them to our front end.
 router.get('/singleCompany/:ticker', async(req, res, next)=>{
   try {
     const requestURL = process.env.IEX_API_ENDPOINT + req.params.ticker + '/quote?token=' + process.env.IEX_API_KEY
     const {data} = await axios.get(requestURL)
-    console.log('in single company route. data:', data)
     res.json(data)
   } catch (error) {
     next(error)

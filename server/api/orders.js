@@ -6,6 +6,7 @@ const {Order, Company} = require('../db/models')
 if (process.env.NODE_ENV === 'development') {
   require('../../secrets')}
 
+//find the logged in user and get all orders.
 router.get('/', async (req, res, next) => {
   try {
     if(req.user){

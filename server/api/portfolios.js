@@ -19,7 +19,7 @@ router.get('/', async (req, res, next) => {
           }]
       })
 
-      //TODO get the company's current price and add it to each object in the response.
+      //Get the company's current price and add it to each object in the response.
       for(row of portfolio.companies){
         const requestURL = process.env.IEX_API_ENDPOINT + row.ticker + '/quote?token=' + process.env.IEX_API_KEY
         const {data} = await axios.get(requestURL)

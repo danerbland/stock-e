@@ -49,7 +49,6 @@ class DisconnectedTradeForm extends React.Component{
   render(){
     const {symbol, companyName, primaryExchange, latestPrice, change, changePercent, volume} = this.props.company
 
-
     //create an error message for front end validation.
     let errorMessage = ''
 
