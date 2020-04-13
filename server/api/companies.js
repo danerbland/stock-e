@@ -17,6 +17,17 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+//get company by id
+router.get('/:id', async (req, res, next) => {
+  try {
+    const company = await Company.findByPk(req.params.id)
+    res.json(company)
+
+  } catch (error) {
+    next(error)
+  }
+})
+
 //for use in search bar lookahead
 router.get('/ticker/:ticker', async (req, res, next) => {
   try {
