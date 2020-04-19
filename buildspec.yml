@@ -6,10 +6,12 @@ phases:
       nodejs: 10
     commands:
       - npm install
-      - npm run build-client
+      - npm install -g webpack
+      - npm install -g pkg
       - echo "Installing dependencies"
   build:
     commands:
+      - npm run build-client
       - pkg .
       - echo "Build Completed"
 
