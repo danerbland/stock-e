@@ -1,10 +1,16 @@
 version: 0.1
 
 phases:
+  install:
+    runtime-version:
+      nodejs: 10
+    commands:
+      - npm install
+      - echo "Installing dependencies"
   build:
     commands:
-      - echo "Build Completed"
       - pkg .
+      - echo "Build Completed"
 
 artifacts:
   files:
