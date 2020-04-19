@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "Stocks made easy (again)",
   "main": "index.js",
+  "bin": "./server/index.js",
   "scripts": {
     "build-client": "webpack",
+    "build-dev-client": "NODE_ENV='development' npm run build-client-watch",
     "build-client-watch": "webpack -w",
     "deploy": "scripts/deploy",
     "heroku-token": "script/encrypt-heroku-auth-token.js",
@@ -15,7 +17,7 @@
     "start-server": "nodemon server -e html,js,scss --ignore public --ignore client"
   },
   "keywords": [],
-  "author": "",
+  "author": "Dan Erbland",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.0",
@@ -43,6 +45,36 @@
     "sequelize": "^5.3.1",
     "style-loader": "^1.0.0"
   },
+  "pkg": {
+    "assets": [
+      "./public/**",
+      "./client/**",
+      "./node_modules/axios/**",
+      "./node_modules/compression/**",
+      "./node_modules/connect-session-sequelize/**",
+      "./node_modules/css-loader/**",
+      "./node_modules/csv-parse/**",
+      "./node_modules/express/**",
+      "./node_modules/express-session/**",
+      "./node_modules/history/**",
+      "./node_modules/morgan/**",
+      "./node_modules/passport/**",
+      "./node_modules/passport-google-oauth/**",
+      "./node_modules/pg/**",
+      "./node_modules/pg-hstore/**",
+      "./node_modules/prop-types/**",
+      "./node_modules/react/**",
+      "./node_modules/react-dom/**",
+      "./node_modules/react-router-dom/**",
+      "./node_modules/redux/**",
+      "./node_modules/redux-devtools-extension/**",
+      "./node_modules/redux-logger/**",
+      "./node_modules/redux-thunk/**",
+      "./node_modules/sequelize/**",
+      "./node_modules/style-loader/**"
+    ]
+  }
+  ,
   "devDependencies": {
     "@babel/core": "^7.4.3",
     "@babel/plugin-proposal-class-properties": "7.4.0",

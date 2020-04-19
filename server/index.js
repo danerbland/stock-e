@@ -54,6 +54,7 @@ passport.deserializeUser(async (id, done) => {
 
       // any remaining requests with an extension (.js, .css, etc.) send 404
   app.use((req, res, next) => {
+    console.log('path', req.path)
     if (path.extname(req.path).length) {
       const err = new Error('Not found')
       err.status = 404
