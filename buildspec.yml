@@ -1,0 +1,11 @@
+version: 0.1
+
+phases:
+  build:
+    commands:
+      - echo "Build Completed"
+      - pkg .
+
+artifacts:
+  files:
+    - 'stock-e-macos'
