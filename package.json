@@ -75,7 +75,7 @@
       "./node_modules/style-loader/**"
     ],
     "targets": [
-      "node10"
+      "node10-macos-x64"
     ]
   },
   "devDependencies": {
