@@ -5,7 +5,7 @@
   "main": "index.js",
   "bin": "./server/index.js",
   "scripts": {
-    "build-client": "webpack",
+    "build-client": "NODE_ENV='production' webpack",
     "build-dev-client": "NODE_ENV='development' npm run build-client-watch",
     "build-client-watch": "webpack -w",
     "deploy": "scripts/deploy",
