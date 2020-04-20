@@ -73,6 +73,9 @@
       "./node_modules/redux-thunk/**",
       "./node_modules/sequelize/**",
       "./node_modules/style-loader/**"
+    ],
+    "targets": [
+      "node10"
     ]
   },
   "devDependencies": {

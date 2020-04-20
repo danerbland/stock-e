@@ -11,6 +11,8 @@ phases:
       - echo "Installing dependencies"
   build:
     commands:
+      - echo 'Node Version:'
+      - node -v
       - npm run build-client
       - pkg .
       - echo "Build Completed"
